@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevName | Game Developer & Designer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* CSS VARIABLE - Untuk kemudahan kustomisasi warna */
+        :root {
+            --primary-bg: #0a0a0c;
+            --secondary-bg: #16161a;
+            --accent-color: #6366f1; /* Indigo Modern */
+            --text-main: #ffffff;
+            --text-dim: #a1a1aa;
+            --card-bg: #1f1f23;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--primary-bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(10, 10, 12, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dim);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+            background: radial-gradient(circle at center, #1e1b4b 0%, #0a0a0c 70%);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #6366f1, #a855f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* PORTFOLIO SECTION */
+        .section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: #333; /* Placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .project-img i {
+            font-size: 3rem;
+            color: rgba(255,255,255,0.1);
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+        }
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent-color);
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* STATS */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            background: var(--secondary-bg);
+            padding: 50px;
+            border-radius: 30px;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+        }
+
+        /* CONTACT FORM */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--secondary-bg);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            border-radius: 10px;
+            outline: none;
+        }
+
+        input:focus, textarea:focus {
+            border-color: var(--accent-color);
+        }
+
+        footer {
+            padding: 50px 10%;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-dim);
+        }
+
+        /* ANIMATIONS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">GAMEDEV.PRO</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1 class="reveal">Membangun Dunia <br><span>Tanpa Batas</span></h1>
+        <p class="reveal">Pengembang Game Indie yang berfokus pada pengalaman imersif, desain mekanik yang presisi, dan visual yang memukau.</p>
+        <div class="reveal">
+            <a href="#projects" class="btn btn-primary">Lihat Portfolio</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="stats-container reveal">
+            <div class="stat-item">
+                <h4 class="counter" data-target="15">0</h4>
+                <p>Games Released</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="counter" data-target="500">0</h4>
+                <p>K+ Downloads</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="counter" data-target="5">0</h4>
+                <p>Awards Won</p>
+            </div>
+            <div class="stat-item">
+                <h4 class="counter" data-target="100">0</h4>
+                <p>% Satisfaction</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="section-title reveal">
+            <h2>Selected Works</h2>
+            <p>Beberapa proyek terbaik yang telah saya selesaikan.</p>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="project-card reveal">
+                <div class="project-img">
+                    <i class="fas fa-ghost"></i>
+                    </div>
+                <div class="project-info">
+                    <div class="tags">
+                        <span class="tag">Unity</span>
+                        <span class="tag">Horror</span>
+                    </div>
+                    <h3>Shadow Echoes</h3>
+                    <p>Game horor psikologis dengan sistem pencahayaan dinamis dan narasi mendalam.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img">
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="project-info">
+                    <div class="tags">
+                        <span class="tag">Unreal Engine</span>
+                        <span class="tag">Sci-Fi</span>
+                    </div>
+                    <h3>Stellar Frontier</h3>
+                    <p>Simulator penjelajahan luar angkasa dengan grafis fotorealistik dan physics akurat.</p>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="project-img">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <div class="project-info">
+                    <div class="tags">
+                        <span class="tag">Godot</span>
+                        <span class="tag">Action</span>
+                    </div>
+                    <h3>Cyber Strike</h3>
+                    <p>Fast-paced 2D platformer dengan gaya seni pixel art modern dan musik synthwave.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="section-title reveal">
+            <h2>Mari Berkolaborasi</h2>
+            <p>Punya ide game yang luar biasa? Mari kita wujudkan bersama.</p>
+        </div>
+
+        <div class="contact-container reveal">
+            <form id="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email Anda" required>
+                </div>
+                <div class="form-group">
+                    <textarea rows="5" placeholder="Pesan atau Detail Proyek" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Kirim Pesan</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 GameDevPro Portfolio. Built with Passion & Code.</p>
+        <div style="margin-top: 15px;">
+            <a href="#" style="color: var(--text-dim); margin: 0 10px;"><i class="fab fa-github"></i></a>
+            <a href="#" style="color: var(--text-dim); margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+            <a href="#" style="color: var(--text-dim); margin: 0 10px;"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // 1. Reveal Animation on Scroll
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+
+        window.addEventListener("scroll", reveal);
+
+        // 2. Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const startCount = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // Trigger counter when section is visible
+        let observer = new IntersectionObserver((entries) => {
+            if(entries[0].isIntersecting) {
+                startCount();
+            }
+        }, { threshold: 0.5 });
+        
+        observer.observe(document.querySelector('.stats-container'));
+
+        // 3. Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 4. Form Submission (Simple Feedback)
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Terima kasih! Pesan Anda telah terkirim (Ini adalah demo).');
+            this.reset();
+        });
+
+        // Initial reveal call
+        reveal();
+    </script>
+</body>
+</html>
